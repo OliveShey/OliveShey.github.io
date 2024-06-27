@@ -150,10 +150,10 @@
 												.then(csvData => {
 													var rows = csvData.split('\n'); // 按行分割数据
 													var headers = rows[0].split(','); // 获取表头
-													for (var i = 1; i < 4; i++) {
+													for (var i = 1; i < rows.length; i++) {
 														var rowData = rows[i].split(',');
 														var row = '<tr>';
-														for (var j = 0; j < headers.length; j++) {
+														for (var j = 0; j < 3; j++) {
 															row += '<td>' + rowData[j] + '</td>';
 														}
 														row += '</tr>';
