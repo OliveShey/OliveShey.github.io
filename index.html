@@ -148,10 +148,9 @@
 													return response.text();
 												})
 												.then(csvData => {
-													var rows = csvData.split('\n'); // 按行分割数据
-													var headers = rows[0].split(','); // 获取表头
+													var rows = csvData.split('\n'); 
 													for (var i = 1; i < rows.length; i++) {
-														var rowData = rows[i].split(',');
+														var rowData = rows[i].split('\t');
 														var row = '<tr>';
 														for (var j = 0; j < 3; j++) {
 															row += '<td>' + rowData[j] + '</td>';
