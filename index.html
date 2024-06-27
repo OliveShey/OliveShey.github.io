@@ -153,13 +153,13 @@
 												.then(csvData => {
 													var rows = csvData.split('\n'); 
 													for (var i = 1; i < rows.length; i++) {
-														table.innerHTML += row;
 														var rowData = rows[i].split('\t');
 														var row = '<tr>';
 														for (var j = 0; j < 3; j++) {
 															row += '<td>' + rowData[j] + '</td>';
 														}
 														row += '</tr>';
+														table.innerHTML += row;
 													}
 												})
 												.catch(error => {
