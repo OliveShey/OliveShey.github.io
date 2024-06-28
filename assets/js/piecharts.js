@@ -1,5 +1,5 @@
 // 假设这是您存储电影类型和对应指数的文本文件路径
-const filePath = "C:/Users/XQ/IdeaProjects/JavaLab3_ZHJ&XQ/src/main/webapp/data/genres_and_index.csv";
+const filePath = "data_csv/genres_and_index.csv";
 var year = document.getElementById('year-select1').value;
 // 获取文件内容
 function readFileContent(filePath) {
