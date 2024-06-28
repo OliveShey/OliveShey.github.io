@@ -8,7 +8,7 @@ function fetchMovies() {
     table.innerHTML += row;
 
     // 假设每个CSV文件存储在服务器上的/data_csv目录中
-    var csvFilePath = 'data/box_office_' + year + '.csv';
+    var csvFilePath = 'data_csv/box_office_' + year + '.csv';
 
     // 使用fetch API获取文件内容
     fetch(csvFilePath)
