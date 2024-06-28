@@ -5,331 +5,348 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>电影票房数据可视化系成果展示</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="shortcut icon" href="images/favicon.png" type="image/png">
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+	<title>电影票房数据可视化系成果展示</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script src="https://cdn.jsdelivr.net/npm/echarts@latest/dist/echarts.min.js"></script>
+	<style>
+		/* 设置父元素为弹性布局 */
+		.container {
+			display: flex;
+			justify-content: center; /* 水平居中 */
+			align-items: center; /* 垂直居中 */
+			height: 100vh; /* 使父元素的高度等于视口高度 */
+		}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+		/* 设置子元素样式 */
+		#piecharts {
+			width: 800px;
+			height: 700px;
+			/* 其他样式 */
+		}
+	</style>
+</head>
+<body class="is-preload">
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+<!-- Wrapper -->
+<div id="wrapper">
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>电影票房数据可视化系统</strong> 重庆大学 大数据与软件学院 谢倩</a>
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
 
-								</header>
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo"><strong>电影票房数据可视化系统</strong> 重庆大学 大数据与软件学院 谢倩</a>
 
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<header>
-											<h1>欢迎观看我的<br />
-											实训成果展示</h1>
-											<p>该电影票房数据可视化系统展示了从2000年至2024年6月每年全球电影总票房的前200部电影的票房数据以及每一部电影的详细票房数据，并展示了一系列数据分析图表供访问者观看</p>
-										</header>
-									</div>
-									<span class="image object">
+			</header>
+
+			<!-- Banner -->
+			<section id="banner">
+				<div class="content">
+					<header>
+						<h1>欢迎观看我的<br />
+							实训成果展示</h1>
+						<p>该电影票房数据可视化系统展示了从2000年至2024年6月每年全球电影总票房的前200部电影的票房数据以及每一部电影的详细票房数据，并展示了一系列数据分析图表供访问者观看</p>
+					</header>
+				</div>
+				<span class="image object">
 										<img src=" images/backup.jpeg" alt="" />
 									</span>
-								</section>
+			</section>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>项目思路</h2>
-									</header>
-									<div class="features">
-										<article>
-											<span class="icon fa-gem"></span>
-											<div class="content">
-												<h3>Ⅰ 项目设计</h3>
-												<p>· 根据电影票房市场的发展和变化，对项目进行了规划<br />
-													· 探寻了国内外多个票房数据网站，最终选定以Box Office Mojo网站的数据作为基本数据支撑，并根据总规划确定了数据的收集目标
-													<br />· 进行了数据库和数据结构的详细设计</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-paper-plane"></span>
-											<div class="content">
-												<h3>Ⅱ 数据收集和整理</h3>
-												<p>· 利用爬虫技术批量获得2000年至2024年6月全球票房年度前200部电影的数据<br />
-												· 爬虫初期被网络服务器反爬虫，遂优化爬虫技术，设置时间间隔，使数据收集顺利进行<br />
-												· 用Jsoup库对数据进行清理，并储存于数据库</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-rocket"></span>
-											<div class="content">
-												<h3>Ⅲ 数据分析和可视化</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-signal"></span>
-											<div class="content">
-												<h3>Ⅳ 网页设计和展示</h3>
-												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											</div>
-										</article>
-									</div>
-								</section>
-
-							<section>
-								<header class="major">
-									<h2>全球年度总票房排行一览</h2>
-								</header>
-								<div class="row gtr-uniform">
-									<div class="col-6 col-12-xsmall">
-								<form id="year-form">
-									<select id="year-select">
-										<option value="">- 选择年份 -</option>
-										<option value="2000">2000年</option>
-										<option value="2001">2001年</option>
-										<option value="2002">2002年</option>
-										<option value="2003">2003年</option>
-										<option value="2004">2004年</option>
-										<option value="2005">2005年</option>
-										<option value="2006">2006年</option>
-										<option value="2007">2007年</option>
-										<option value="2008">2008年</option>
-										<option value="2009">2009年</option>
-										<option value="2010">2010年</option>
-										<option value="2011">2011年</option>
-										<option value="2012">2012年</option>
-										<option value="2013">2013年</option>
-										<option value="2014">2014年</option>
-										<option value="2015">2015年</option>
-										<option value="2016">2016年</option>
-										<option value="2017">2017年</option>
-										<option value="2018">2018年</option>
-										<option value="2019">2019年</option>
-										<option value="2020">2020年</option>
-										<option value="2021">2021年</option>
-										<option value="2022">2022年</option>
-										<option value="2023">2023年</option>
-										<option value="2024">2024年</option>
-									</select></form>
-									</div>
-									<div class="col-6 col-12-xsmall">
-									<button type="button" onclick="fetchMovies()">查看排行榜</button>
-									</div>
-									<br>
-								</div>
-								<br>
-								<br>
-								<table id="movies-table">
-									<!-- 电影数据将通过JavaScript动态填充 -->
-								</table>
-
-								<script>
-									function fetchMovies() {
-										var year = document.getElementById('year-select').value;
-										var table = document.getElementById('movies-table');
-										table.innerHTML = ''; // 清空旧数据
-
-										// 创建一个新的行元素
-										var row = '<tr><th>ID</th><th>电影名</th><th>总票房</th></tr>';
-										table.innerHTML += row;
-
-										// 假设每个CSV文件存储在服务器上的/data_csv目录中
-										var csvFilePath = 'data_csv/box_office_' + year + '.csv';
-
-										// 使用fetch API获取文件内容
-										fetch(csvFilePath)
-												.then(response => {
-													if (!response.ok) {
-														throw new Error('Network response was not ok');
-													}
-													return response.text();
-												})
-												.then(csvData => {
-													var rows = csvData.split('\n'); // 按行分割数据
-													for (var i = 1; i < rows.length; i++) {
-														var rowData = rows[i].split('\t');
-														var row = '<tr>';
-														for (var j = 0; j < 3; j++) {
-															row += '<td>' + rowData[j] + '</td>';
-														}
-														row += '</tr>';
-														table.innerHTML += row;
-													}
-												})
-												.catch(error => {
-													console.error('There has been a problem with your fetch operation:', error);
-												});
-									}
-
-								</script>
-							</section>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ipsum sed dolor</h2>
-									</header>
-									<div class="posts">
-										<article>
-											<a href="#" class="image"><img src=" images/pic01.jpg" alt="" /></a>
-											<h3>Interdum aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src=" images/pic02.jpg" alt="" /></a>
-											<h3>Nulla amet dolore</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src=" images/pic03.jpg" alt="" /></a>
-											<h3>Tempus ullamcorper</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src=" images/pic04.jpg" alt="" /></a>
-											<h3>Sed etiam facilis</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src=" images/pic05.jpg" alt="" /></a>
-											<h3>Feugiat lorem aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src=" images/pic06.jpg" alt="" /></a>
-											<h3>Amet varius aliquam</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-									</div>
-								</section>
-
+			<!-- Section -->
+			<section>
+				<header class="major">
+					<h2>项目思路</h2>
+				</header>
+				<div class="features">
+					<article>
+						<span class="icon fa-gem"></span>
+						<div class="content">
+							<h3>Ⅰ 项目设计</h3>
+							<p>· 根据电影票房市场的发展和变化，对项目进行了规划<br />
+								· 探寻了国内外多个票房数据网站，最终选定以Box Office Mojo网站的数据作为基本数据支撑，并根据总规划确定了数据的收集目标
+								<br />· 进行了数据库和数据结构的详细设计</p>
 						</div>
-					</div>
-
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href=" generic.html">Generic</a></li>
-										<li><a href=" elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
-									</ul>
-								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src=" images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src=" images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src=" images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
-
+					</article>
+					<article>
+						<span class="icon solid fa-paper-plane"></span>
+						<div class="content">
+							<h3>Ⅱ 数据收集和整理</h3>
+							<p>· 利用爬虫技术批量获得2000年至2024年6月全球票房年度前200部电影的数据<br />
+								· 爬虫初期被网络服务器反爬虫，遂优化爬虫技术，设置时间间隔，使数据收集顺利进行<br />
+								· 用Jsoup库对数据进行清理，并储存于数据库</p>
 						</div>
+					</article>
+					<article>
+						<span class="icon solid fa-rocket"></span>
+						<div class="content">
+							<h3>Ⅲ 数据分析和可视化</h3>
+							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						</div>
+					</article>
+					<article>
+						<span class="icon solid fa-signal"></span>
+						<div class="content">
+							<h3>Ⅳ 网页设计和展示</h3>
+							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section>
+				<header class="major">
+					<h2>全球年度总票房排行一览</h2>
+				</header>
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<form id="year-form1">
+							<select id="year-select1">
+								<option value="">- 选择年份 -</option>
+								<option value="2000">2000</option>
+								<option value="2001">2001</option>
+								<option value="2002">2002</option>
+								<option value="2003">2003</option>
+								<option value="2004">2004</option>
+								<option value="2005">2005</option>
+								<option value="2006">2006</option>
+								<option value="2007">2007</option>
+								<option value="2008">2008</option>
+								<option value="2009">2009</option>
+								<option value="2010">2010</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+							</select></form>
 					</div>
+					<div class="col-6 col-12-xsmall">
+						<button type="button" onclick="fetchMovies()">查看排行榜</button>
+					</div>
+				</div>
+				<table id="movies-table"></table>
+				<script src="assets/js/movies_table.js"></script>
+			</section>
 
-			</div>
+			<!-- Section -->
+			<section>
+				<header class="major">
+					<h2>数据分析图表展示</h2>
+				</header>
 
-		<!-- Scripts -->
-			<script src=" assets/js/jquery.min.js"></script>
-			<script src=" assets/js/browser.min.js"></script>
-			<script src=" assets/js/breakpoints.min.js"></script>
-			<script src=" assets/js/util.js"></script>
-			<script src=" assets/js/main.js"></script>
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<form id="year-form2">
+							<select id="year-select2">
+								<option value="">- 选择年份 -</option>
+								<option value="2000">2000</option>
+								<option value="2001">2001</option>
+								<option value="2002">2002</option>
+								<option value="2003">2003</option>
+								<option value="2004">2004</option>
+								<option value="2005">2005</option>
+								<option value="2006">2006</option>
+								<option value="2007">2007</option>
+								<option value="2008">2008</option>
+								<option value="2009">2009</option>
+								<option value="2010">2010</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+							</select></form>
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<button type="button" onclick="readFileContent()">查看图表</button>
+					</div>
+				</div>
 
-	</body>
+				<div class="container">
+					<!-- 需要居中的div元素 -->
+					<div id="piecharts"></div>
+				</div>
+				<script src="assets/js/piecharts.js"></script>
+</br></br></br></br>
+				<div class="posts">
+					<article>
+						<a href="#" class="image"><img src=" images/pic01.jpg" alt="" /></a>
+						<h3>Interdum aenean</h3>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<ul class="actions">
+							<li><a href="#" class="button">More</a></li>
+						</ul>
+					</article>
+					<article>
+						<a href="#" class="image"><img src=" images/pic02.jpg" alt="" /></a>
+						<h3>Nulla amet dolore</h3>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<ul class="actions">
+							<li><a href="#" class="button">More</a></li>
+						</ul>
+					</article>
+					<article>
+						<a href="#" class="image"><img src=" images/pic03.jpg" alt="" /></a>
+						<h3>Tempus ullamcorper</h3>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<ul class="actions">
+							<li><a href="#" class="button">More</a></li>
+						</ul>
+					</article>
+					<article>
+						<a href="#" class="image"><img src=" images/pic04.jpg" alt="" /></a>
+						<h3>Sed etiam facilis</h3>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<ul class="actions">
+							<li><a href="#" class="button">More</a></li>
+						</ul>
+					</article>
+					<article>
+						<a href="#" class="image"><img src=" images/pic05.jpg" alt="" /></a>
+						<h3>Feugiat lorem aenean</h3>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<ul class="actions">
+							<li><a href="#" class="button">More</a></li>
+						</ul>
+					</article>
+					<article>
+						<a href="#" class="image"><img src=" images/pic06.jpg" alt="" /></a>
+						<h3>Amet varius aliquam</h3>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<ul class="actions">
+							<li><a href="#" class="button">More</a></li>
+						</ul>
+					</article>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+	<!-- Sidebar -->
+	<div id="sidebar">
+		<div class="inner">
+
+			<!-- Search -->
+			<section id="search" class="alt">
+				<form method="post" action="#">
+					<input type="text" name="query" id="query" placeholder="Search" />
+				</form>
+			</section>
+
+			<!-- Menu -->
+			<nav id="menu">
+				<header class="major">
+					<h2>Menu</h2>
+				</header>
+				<ul>
+					<li><a href="index.html">Homepage</a></li>
+					<li><a href=" generic.html">Generic</a></li>
+					<li><a href=" elements.html">Elements</a></li>
+					<li>
+						<span class="opener">Submenu</span>
+						<ul>
+							<li><a href="#">Lorem Dolor</a></li>
+							<li><a href="#">Ipsum Adipiscing</a></li>
+							<li><a href="#">Tempus Magna</a></li>
+							<li><a href="#">Feugiat Veroeros</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Etiam Dolore</a></li>
+					<li><a href="#">Adipiscing</a></li>
+					<li>
+						<span class="opener">Another Submenu</span>
+						<ul>
+							<li><a href="#">Lorem Dolor</a></li>
+							<li><a href="#">Ipsum Adipiscing</a></li>
+							<li><a href="#">Tempus Magna</a></li>
+							<li><a href="#">Feugiat Veroeros</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Maximus Erat</a></li>
+					<li><a href="#">Sapien Mauris</a></li>
+					<li><a href="#">Amet Lacinia</a></li>
+				</ul>
+			</nav>
+
+			<!-- Section -->
+			<section>
+				<header class="major">
+					<h2>Ante interdum</h2>
+				</header>
+				<div class="mini-posts">
+					<article>
+						<a href="#" class="image"><img src=" images/pic07.jpg" alt="" /></a>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+					</article>
+					<article>
+						<a href="#" class="image"><img src=" images/pic08.jpg" alt="" /></a>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+					</article>
+					<article>
+						<a href="#" class="image"><img src=" images/pic09.jpg" alt="" /></a>
+						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+					</article>
+				</div>
+				<ul class="actions">
+					<li><a href="#" class="button">More</a></li>
+				</ul>
+			</section>
+
+			<!-- Section -->
+			<section>
+				<header class="major">
+					<h2>Get in touch</h2>
+				</header>
+				<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+				<ul class="contact">
+					<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
+					<li class="icon solid fa-phone">(000) 000-0000</li>
+					<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+						Nashville, TN 00000-0000</li>
+				</ul>
+			</section>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
+
+		</div>
+	</div>
+
+</div>
+
+<!-- Scripts -->
+<script src=" assets/js/jquery.min.js"></script>
+<script src=" assets/js/browser.min.js"></script>
+<script src=" assets/js/breakpoints.min.js"></script>
+<script src=" assets/js/util.js"></script>
+<script src=" assets/js/main.js"></script>
+
+</body>
 </html>
