@@ -20,7 +20,11 @@
 			align-items: center; /* 垂直居中 */
 			height: 100vh; /* 使父元素的高度等于视口高度 */
 		}
-
+                #changes_line_charts {
+			margin: 0 auto; /* 水平居中 */
+			width: 80%; /* 宽度设为80%，可以根据需要调整 */
+			height: 600px; /* 高度设为600px，可以根据需要调整 */
+		}
 		#piecharts {
 			position: absolute; /* 设置为绝对定位 */
 			top: 30px;
@@ -203,9 +207,9 @@
 </br></br></br></br>
 				
 				<h3>Ⅱ 各年度全球票房前200名电影总票房及其标准差折线图</h3>
-				<div class="container">
 					</br></br>
-					<div id="changes_line_charts"></div>
+				<div class="container">
+					<div id="changes_line_charts" style="width: 600px; height: 400px;"></div>
 				</div>
 				<script src="assets/js/changes_line_charts.js"></script>
 
