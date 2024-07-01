@@ -2,7 +2,7 @@ var chartDom = document.getElementById('changes_line_charts');
 var myChart = echarts.init(chartDom);
 var option;
 
-const colors = ['#5470C6', '#91CC75', '#EE6666'];
+const colors = ['#5470C6', '#EE6666'];
 option = {
     color: colors,
     tooltip: {
@@ -12,7 +12,8 @@ option = {
         }
     },
     grid: {
-        right: '20%'
+        left: '18%',
+        right: '30%'
     },
     toolbox: {
         feature: {
@@ -22,7 +23,7 @@ option = {
         }
     },
     legend: {
-        data: ['Evaporation', 'Precipitation', 'Temperature']
+        data: ['每年全球票房前200电影票房之和', '每年全球票房前200电影票房之标准差']
     },
     xAxis: [
         {
@@ -30,15 +31,19 @@ option = {
             axisTick: {
                 alignWithLabel: true
             },
-            // prettier-ignore
-            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+            data: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009',
+                '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019',
+                '2020', '2021', '2022', '2023', '2024']
+
         }
+
     ],
     yAxis: [
         {
             type: 'value',
-            name: 'Evaporation',
-            position: 'right',
+            name: '每年全球票房前200电影票房之和',
+            position: 'left',
             alignTicks: true,
             axisLine: {
                 show: true,
@@ -47,12 +52,12 @@ option = {
                 }
             },
             axisLabel: {
-                formatter: '{value} ml'
+                formatter: '${value}'
             }
         },
         {
             type: 'value',
-            name: 'Precipitation',
+            name: '每年全球票房前200电影票房之标准差',
             position: 'right',
             alignTicks: true,
             offset: 80,
@@ -63,48 +68,39 @@ option = {
                 }
             },
             axisLabel: {
-                formatter: '{value} ml'
-            }
-        },
-        {
-            type: 'value',
-            name: '温度',
-            position: 'left',
-            alignTicks: true,
-            axisLine: {
-                show: true,
-                lineStyle: {
-                    color: colors[2]
-                }
-            },
-            axisLabel: {
-                formatter: '{value} °C'
+                formatter: '{value}'
             }
         }
     ],
     series: [
         {
-            name: 'Evaporation',
-            type: 'bar',
-            data: [
-                2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3
-            ]
-        },
-        {
-            name: 'Precipitation',
-            type: 'bar',
-            yAxisIndex: 1,
-            data: [
-                2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3
-            ]
-        },
-        {
-            name: 'Temperature',
+            name: '每年全球票房前200电影票房之和',
+            yAxisIndex: 0,
             type: 'line',
-            yAxisIndex: 2,
-            data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+            data : [
+                13936536887, 16134416061, 17785601879, 18765289893,
+                19464385226, 18916200258, 19919327896, 22316413048,
+                23253651146, 25693569534, 25570061807, 26925171339,
+                29507398427, 29077504468, 30010529897, 32741170056,
+                32374542002, 34209146582, 34135933512, 35428768128,
+                7940291432, 18249642692, 20902009035, 21544915214,
+                7179349864
+            ]
+        },
+        {
+            name: '每年全球票房前200电影票房之标准差',
+            type: 'line',
+            yAxisIndex: 1,
+            data : [
+                94689325.992, 129557383.931, 137093391.477, 142182292.016,
+                141395534.308, 134632142.386, 133822598.016, 160912943.418,
+                150357116.112, 244757887.010, 176741942.000, 190550444.592,
+                218181001.189, 205460390.273, 190979653.340, 272729778.239,
+                219952403.508, 247114674.087, 266983574.467, 318104956.647,
+                78721467.065, 194314077.097, 251596459.818, 202618157.839,
+                102494526.979
+            ]
         }
     ]
 };
-
 option && myChart.setOption(option);
