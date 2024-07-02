@@ -6,98 +6,13 @@
 -->
 <html>
 <head>
-	<title>电影票房数据可视化系成果展示</title>
+	<title>电影票房数据可视化系统成果展示</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<script src="https://cdn.jsdelivr.net/npm/echarts@latest/dist/echarts.min.js"></script>
-	<style>
-		.container {
-			position: relative; /* 设置为相对定位 */
-			display: flex;
-			flex-direction: column; /* 设置为垂直排列 */
-			align-items: center; /* 垂直居中 */
-			height: 100vh; /* 使父元素的高度等于视口高度 */
-		}
-		#piecharts {
-			position: absolute; /* 设置为绝对定位 */
-			top: 30px;
-			left: 0; /* 左端对齐 */
-			width: 100%; /* 宽度等于父容器 */
-			height: 100%; /* 高度等于父容器 */
-		}
-		#changes_line_charts {
-			margin: 0 auto; /* 水平居中 */
-			width: 100%; /* 宽度设为80%，可以根据需要调整 */
-			height: 600px; /* 高度设为600px，可以根据需要调整 */
-		}
-		@media screen and (max-width: 600px) {
-			#piecharts {
-				width: 100%;
-				height: 100%; /* 或者您希望的小的高度 */
-			}
-		}
-
-		.movie-info-popup {
-			position: fixed;
-			top: 100px; /* 弹窗距离页面顶部100像素 */
-			right: 10px; /* 弹窗距离页面右侧10像素 */
-			background: white;
-			border: 1px solid #ccc;
-			padding: 10px;
-			z-index: 1000; /* 确保弹窗在页面其他元素之上 */
-			display: none; /* 默认隐藏弹窗 */
-
-		}
-
-		/* 添加样式来创建可滑动的区域 */
-		.movie-info-popup .scrollable {
-			height: 200px; /* 可滑动区域的高度 */
-			overflow-y: auto; /* 启用垂直滚动 */
-		}
-
-		/* 添加样式来创建关闭按钮 */
-		.movie-info-popup .close {
-			float: right;
-			cursor: pointer;
-		}
-
-		/* 遮罩层 */
-		#overlay {
-			position: fixed;
-			left: 0px;
-			top: 0px;
-			width: 100%;
-			height: 100%;
-			font-size: 16px;
-			/* IE9以下不支持rgba模式 */
-			background-color: rgba(0, 0, 0, 0.5);
-			/* 兼容IE8及以下 */
-			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000);
-			display: none;
-		}
-
-		/* 弹出框的按钮 */
-		.popup_btn button {
-			color: #778899;
-			width: 40%;
-			height: 40px;
-			cursor: pointer;
-			border: solid 1px #cccccc;
-			border-radius: 5px;
-			margin: 5px 10px;
-			color: #ffffff;
-			background-color: #337ab7;
-		}
-
-		.modal-content {
-			position: static;
-			width: 100%;
-			height: 40%;
-		}
-
-	</style>
+	<style></style>
 </head>
 <body class="is-preload">
 
@@ -110,7 +25,7 @@
 
 			<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="logo"><strong>电影票房数据可视化系统</strong> 重庆大学 大数据与软件学院 谢倩</a>
+				<a class="logo"><strong>电影票房数据可视化系统</strong> 重庆大学 大数据与软件学院 谢倩</a>
 
 			</header>
 
@@ -139,7 +54,7 @@
 						<div class="content">
 							<h3>Ⅰ 项目设计</h3>
 							<p>· 根据电影票房市场的发展和变化，对项目进行了规划<br />
-								· 探寻了国内外多个票房数据网站，最终选定以Box Office Mojo网站的数据作为基本数据支撑，并根据总规划确定了数据的收集目标
+								· 探寻了国内外多个票房数据网站，最终选定以Box Office Mojo网站和豆瓣电影的数据作为基本数据支撑，并根据总规划确定了数据的收集目标
 								<br />· 进行了数据库和数据结构的详细设计</p>
 						</div>
 					</article>
@@ -156,14 +71,18 @@
 						<span class="icon solid fa-rocket"></span>
 						<div class="content">
 							<h3>Ⅲ 数据分析和可视化</h3>
-							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							<p>· 从时间和空间的维度<br />
+								· 利用总和、标准差两个数据来评估不同时期、不同国家/地区的票房情况<br />
+								· 最终利用echarts中的饼图和折线图来可视化呈现</p>
 						</div>
 					</article>
 					<article>
 						<span class="icon solid fa-signal"></span>
 						<div class="content">
 							<h3>Ⅳ 网页设计和展示</h3>
-							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+							<p>· 将爬取的详细数据通过网页的表格和弹窗形式层层展示<br />
+							· 将图表内容通过网页的动效展示<br />
+							· 细致打磨网页设计的细节，反复调整html,css,js等各类文件，使呈现效果最佳</p>
 						</div>
 					</article>
 				</div>
@@ -265,89 +184,85 @@
 							</select></form>
 					</div>
 					<div class="col-6 col-12-xsmall">
-						<button type="button" onclick="createPieChart()">查看图表</button>
+						<button type="button" onclick="createPieChart1()">查看图表</button>
 					</div>
 				</div>
 				<div class="container">
 					</br></br>
-					<h2 id="piechart-title">_</h2>
-					<div id="piecharts"></div>
+					<h2 id="piechart-title1">_</h2>
+					<div id="piecharts1"></div>
 				</div>
-				<script src="assets/js/piecharts.js"></script>
+				<script src="assets/js/piecharts1.js"></script>
 </br></br></br></br>
 
+				<h3>Ⅱ 各年度全球票房前200名电影国家/地区票房占比饼状图</h3>
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<form id="year-form3">
+							<select id="year-select3">
+								<option value="">- 选择年份 -</option>
+								<option value="2000">2000</option>
+								<option value="2001">2001</option>
+								<option value="2002">2002</option>
+								<option value="2003">2003</option>
+								<option value="2004">2004</option>
+								<option value="2005">2005</option>
+								<option value="2006">2006</option>
+								<option value="2007">2007</option>
+								<option value="2008">2008</option>
+								<option value="2009">2009</option>
+								<option value="2010">2010</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+							</select></form>
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<button type="button" onclick="createPieChart2()">查看图表</button>
+					</div>
+				</div>
+				<div class="container">
+					</br></br>
+					<h2 id="piechart-title2">_</h2>
+					<div id="piecharts2"></div>
+				</div>
+				<script src="assets/js/piecharts2.js"></script>
+				</br></br></br></br>
+
 				<h3>Ⅱ 各年度全球票房前200名电影总票房及其标准差折线图</h3>
+				<button type="button" onclick="create_changes_line_charts()">查看图表</button>
 					</br></br>
 				<div class="container">
 					<div id="changes_line_charts" style="width: 600px; height: 400px;"></div>
 				</div>
 				<script src="assets/js/changes_line_charts.js"></script>
-							</section>
 
-	<!-- Sidebar -->
-	<div id="sidebar">
-		<div class="inner">
-
-			<!-- Search -->
-			<section id="search" class="alt">
-				<form method="post" action="#">
-					<input type="text" name="query" id="query" placeholder="Search" />
-				</form>
 			</section>
 
-			<!-- Menu -->
-			<nav id="menu">
-				<header class="major">
-					<h2>Menu</h2>
-				</header>
-				<ul>
-					<li><a href="index.html">Homepage</a></li>
-					<li><a href=" generic.html">Generic</a></li>
-					<li><a href=" elements.html">Elements</a></li>
-					<li>
-						<span class="opener">Submenu</span>
-						<ul>
-							<li><a href="#">Lorem Dolor</a></li>
-							<li><a href="#">Ipsum Adipiscing</a></li>
-							<li><a href="#">Tempus Magna</a></li>
-							<li><a href="#">Feugiat Veroeros</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Etiam Dolore</a></li>
-					<li><a href="#">Adipiscing</a></li>
-					<li>
-						<span class="opener">Another Submenu</span>
-						<ul>
-							<li><a href="#">Lorem Dolor</a></li>
-							<li><a href="#">Ipsum Adipiscing</a></li>
-							<li><a href="#">Tempus Magna</a></li>
-							<li><a href="#">Feugiat Veroeros</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Maximus Erat</a></li>
-					<li><a href="#">Sapien Mauris</a></li>
-					<li><a href="#">Amet Lacinia</a></li>
-				</ul>
-			</nav>
 
-			
-
-			<!-- Footer -->
-			<footer id="footer">
-				<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-			</footer>
-
-		</div>
-	</div>
-
-</div>
 
 <!-- Scripts -->
-<script src=" assets/js/jquery.min.js"></script>
-<script src=" assets/js/browser.min.js"></script>
-<script src=" assets/js/breakpoints.min.js"></script>
-<script src=" assets/js/util.js"></script>
-<script src=" assets/js/main.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/movies_table.js"></script>
+<script src="assets/js/piecharts1.js"></script>
+<script src="assets/js/changes_line_charts.js"></script>
 
+		</div>
+	</div></div>
 </body>
 </html>
