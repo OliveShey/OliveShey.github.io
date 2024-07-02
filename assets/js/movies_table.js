@@ -42,7 +42,7 @@ function fetchMovies() {
     table.innerHTML = ''; // 清空旧数据
 
     // 创建一个新的行元素
-    var row = '<tr><th>ID</th><th>电影名</th><th>总票房</th></tr>';
+    var row = '<tr class="hover-link"><th>排名</th><th>电影名</th><th>总票房</th></tr>';
     table.innerHTML += row;
 
     // 假设每个CSV文件存储在服务器上的/data_csv目录中
@@ -61,13 +61,13 @@ function fetchMovies() {
             for (var i = 1; i < rows.length; i++) {
                 var rowData = rows[i].split('\t');
                 var movieId = rowData[0]; // 假设第一列是电影ID
-                var movieName = rowData[8];
+                var movieName = rowData[8].replace(/"/g,"");
                 if(movieName === "\r"){
                     movieName = rowData[1];
                 }
                 var boxOffice = rowData[2]; // 假设第三列是总票房
 
-                var row = '<tr>';
+                var row = '<tr class="hover-link">';
                 row += '<td>' + movieId + '</td>';
                 row += '<td onclick="showMovieDetails(' + movieId + ',' + year + ')">' + movieName + '</td>';
                 row += '<td>' + boxOffice + '</td>';
@@ -96,14 +96,14 @@ function showMovieDetails(movieId, year) {
             var nameFlag = 1;
             var rows = csvData.split('\n'); // 按行分割数据
             var rowData = rows[movieId].split('\t');
-            var movieName = rowData[8];
+            var movieName = rowData[8].replace(/"/g,"");
             if(movieName === "\r"){
                 movieName = rowData[1];
                 nameFlag = 0;
             }
             var boxOffice = rowData[2];
             var detailsBoxOffice = rowData[4];
-            var genres = rowData[5].replace(/[\[\]"]/g, '');
+            var genres = rowData[5].replace(/[\[\]"]/g, '').replace(/,/g,", ");
             if(genres === "")
             {genres = "-";}
             var publicationTerritory = rowData[6];
@@ -124,8 +124,7 @@ function showMovieDetails(movieId, year) {
                     <div class="text">
                     <h2>${movieName}</h2>
                     <p>总票房：${boxOffice}</p>
-                    <p>类型：</p>
-                    <p>${genres}</p>
+                    <p>类型：${genres}</p>
                     <p>发行国家/地区：${publicationTerritory}</p>
                     <p>别名：${movieEnglishName}</p>
                     </div>
@@ -139,8 +138,7 @@ function showMovieDetails(movieId, year) {
                     <div class="text">
                     <h2>${movieName}</h2>
                     <p>总票房：${boxOffice}</p>
-                    <p>类型：</p>
-                    <p>${genres}</p>
+                    <p>类型：${genres}</p>
                     <p>发行国家/地区：${publicationTerritory}</p>
                     </div>
                     <a class="image"><img src= "${moviePoster}"></a>
