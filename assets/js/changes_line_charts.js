@@ -1,3 +1,4 @@
+function create_changes_line_charts(){
 var chartDom = document.getElementById('changes_line_charts');
 var myChart = echarts.init(chartDom);
 var option;
@@ -103,4 +104,4 @@ option = {
         }
     ]
 };
-option && myChart.setOption(option);
+option && myChart.setOption(option);}
