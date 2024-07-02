@@ -2295,3 +2295,111 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+tr.hover-link {
+  position: relative;
+  color: #5b5b5b; /* 默认颜色 */
+  text-decoration: none;
+  border-bottom: dotted 1px;
+  transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+}
+
+tr.hover-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.92);
+  transform: scaleX(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+tr.hover-link:hover {
+  color: #f56a6a; /* 悬停时的颜色 */
+}
+
+tr.hover-link:hover::before {
+  transform: scaleX(1);
+}
+
+.container {
+  position: relative; /* 设置为相对定位 */
+  display: flex;
+  flex-direction: column; /* 设置为垂直排列 */
+  align-items: center; /* 垂直居中 */
+  height: 100vh; /* 使父元素的高度等于视口高度 */
+}
+#piecharts1 {
+  position: absolute; /* 设置为绝对定位 */
+  top: 30px;
+  left: 0; /* 左端对齐 */
+  width: 100%; /* 宽度等于父容器 */
+  height: 100%; /* 高度等于父容器 */
+}
+#piecharts2 {
+  position: absolute; /* 设置为绝对定位 */
+  top: 30px;
+  left: 0; /* 左端对齐 */
+  width: 100%; /* 宽度等于父容器 */
+  height: 100%; /* 高度等于父容器 */
+}
+#changes_line_charts {
+  margin: 0 auto; /* 水平居中 */
+  width: 100%; /* 宽度设为80%，可以根据需要调整 */
+  height: 600px; /* 高度设为600px，可以根据需要调整 */
+}
+
+.movie-info-popup {
+  position: fixed;
+  top: 100px; /* 弹窗距离页面顶部100像素 */
+  right: 10px; /* 弹窗距离页面右侧10像素 */
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000; /* 确保弹窗在页面其他元素之上 */
+  display: none; /* 默认隐藏弹窗 */
+
+}
+
+
+/* 添加样式来创建关闭按钮 */
+.movie-info-popup .close {
+  float: right;
+  cursor: pointer;
+}
+
+/* 遮罩层 */
+#overlay {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  /* IE9以下不支持rgba模式 */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* 兼容IE8及以下 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000);
+  display: none;
+}
+
+/* 弹出框的按钮 */
+.popup_btn button {
+  color: #778899;
+  width: 40%;
+  height: 40px;
+  cursor: pointer;
+  border: solid 1px #cccccc;
+  border-radius: 5px;
+  margin: 5px 10px;
+  color: #ffffff;
+  background-color: #337ab7;
+}
+
+.modal-content {
+  position: static;
+  width: 100%;
+  height: 40%;
+}
