@@ -6,7 +6,7 @@
 -->
 <html>
 <head>
-	<title>电影票房数据可视化系统成果展示</title>
+	<title>电影票房数据可视化系成果展示</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
@@ -20,11 +20,6 @@
 			align-items: center; /* 垂直居中 */
 			height: 100vh; /* 使父元素的高度等于视口高度 */
 		}
-                #changes_line_charts {
-			margin: 0 auto; /* 水平居中 */
-			width: 100%; 
-			height: 600px; 
-		}
 		#piecharts {
 			position: absolute; /* 设置为绝对定位 */
 			top: 30px;
@@ -32,12 +27,76 @@
 			width: 100%; /* 宽度等于父容器 */
 			height: 100%; /* 高度等于父容器 */
 		}
+		#changes_line_charts {
+			margin: 0 auto; /* 水平居中 */
+			width: 100%; /* 宽度设为80%，可以根据需要调整 */
+			height: 600px; /* 高度设为600px，可以根据需要调整 */
+		}
 		@media screen and (max-width: 600px) {
-  #piecharts {
-    width: 100%;
-    height: 950px; /* 或者您希望的小的高度 */
-  }
-}
+			#piecharts {
+				width: 100%;
+				height: 100%; /* 或者您希望的小的高度 */
+			}
+		}
+
+		.movie-info-popup {
+			position: fixed;
+			top: 100px; /* 弹窗距离页面顶部100像素 */
+			right: 10px; /* 弹窗距离页面右侧10像素 */
+			background: white;
+			border: 1px solid #ccc;
+			padding: 10px;
+			z-index: 1000; /* 确保弹窗在页面其他元素之上 */
+			display: none; /* 默认隐藏弹窗 */
+
+		}
+
+		/* 添加样式来创建可滑动的区域 */
+		.movie-info-popup .scrollable {
+			height: 200px; /* 可滑动区域的高度 */
+			overflow-y: auto; /* 启用垂直滚动 */
+		}
+
+		/* 添加样式来创建关闭按钮 */
+		.movie-info-popup .close {
+			float: right;
+			cursor: pointer;
+		}
+
+		/* 遮罩层 */
+		#overlay {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			font-size: 16px;
+			/* IE9以下不支持rgba模式 */
+			background-color: rgba(0, 0, 0, 0.5);
+			/* 兼容IE8及以下 */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000);
+			display: none;
+		}
+
+		/* 弹出框的按钮 */
+		.popup_btn button {
+			color: #778899;
+			width: 40%;
+			height: 40px;
+			cursor: pointer;
+			border: solid 1px #cccccc;
+			border-radius: 5px;
+			margin: 5px 10px;
+			color: #ffffff;
+			background-color: #337ab7;
+		}
+
+		.modal-content {
+			position: static;
+			width: 100%;
+			height: 40%;
+		}
+
 	</style>
 </head>
 <body class="is-preload">
@@ -153,6 +212,17 @@
 				</br>
 				<table id="movies-table"></table>
 				<script src="assets/js/movies_table.js"></script>
+
+				<div id="movieDetails" class="movie-info-popup">
+					<div class="modal-content">
+						<span class="close" onclick="hidePopup()">&times;</span>
+						<!-- ... 电影详细信息 ... -->
+					</div>
+				</div>
+
+				<div id="overlay"></div>
+
+
 			</section>
 
 			<!-- Section -->
@@ -160,8 +230,8 @@
 				<header class="major">
 					<h2>数据分析图表展示</h2>
 				</header>
-				<h3>Ⅰ 各年度全球票房前200名电影类型占比饼状图</h3>
 
+				<h3>Ⅰ 各年度全球票房前200名电影类型占比饼状图</h3>
 				<div class="row gtr-uniform">
 					<div class="col-6 col-12-xsmall">
 						<form id="year-form2">
@@ -205,14 +275,13 @@
 				</div>
 				<script src="assets/js/piecharts.js"></script>
 </br></br></br></br>
-				
+
 				<h3>Ⅱ 各年度全球票房前200名电影总票房及其标准差折线图</h3>
 					</br></br>
 				<div class="container">
 					<div id="changes_line_charts" style="width: 600px; height: 400px;"></div>
 				</div>
 				<script src="assets/js/changes_line_charts.js"></script>
-
 							</section>
 
 	<!-- Sidebar -->
