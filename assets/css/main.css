@@ -1034,7 +1034,10 @@ label {
   font-weight: 600;
   margin: 0 0 1em 0; }
 
-input[type="text"],
+input[type="text"]{
+  height: 3.2em;
+font-size: 1.4em}
+
 input[type="password"],
 input[type="email"],
 input[type="tel"],
